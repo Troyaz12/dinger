@@ -34,6 +34,6 @@ repositories {
     jcenter()
 }
 dependencies {
-    compile rootProject.ext.compileDependencies
-    compile rootProject.ext.compileCrashReporterDependencies
+    implementation rootProject.ext.compileDependencies
+    implementation rootProject.ext.compileCrashReporterDependencies
 }

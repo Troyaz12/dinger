@@ -55,11 +55,6 @@ dependencies {
     kapt rootProject.ext.annotationProcessorDataDependencies
     debugImplementation rootProject.ext.debugCompileDataDependencies
     implementation rootProject.ext.compileDependencies
-    rootProject.ext.compileDataDependencies.forEach {
-        implementation(it) {
-            // Correct RxJava is brought by the domain module
-            exclude group: 'io.reactivex'
-        }
-    }
-    provided rootProject.ext.providedDataDependencies
+    implementation rootProject.ext.compileDataDependencies
+    compileOnly rootProject.ext.providedDataDependencies
 }

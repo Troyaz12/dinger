@@ -34,6 +34,6 @@ repositories {
     jcenter()
 }
 dependencies {
-    compile rootProject.ext.compileDependencies
-    compile rootProject.ext.compileEventTrackerDependencies
+    implementation rootProject.ext.compileDependencies
+    implementation rootProject.ext.compileEventTrackerDependencies
 }

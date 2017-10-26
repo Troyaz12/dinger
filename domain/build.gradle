@@ -36,7 +36,7 @@ repositories {
 }
 dependencies {
     kapt rootProject.ext.annotationProcessorDomainDependencies
-    compile rootProject.ext.compileDependencies
-    compile rootProject.ext.compileDomainDependencies
-    provided rootProject.ext.providedDomainDependencies
+    implementation rootProject.ext.compileDependencies
+    implementation rootProject.ext.compileDomainDependencies
+    compileOnly rootProject.ext.providedDomainDependencies
 }

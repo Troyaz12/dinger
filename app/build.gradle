@@ -61,17 +61,13 @@ repositories {
     jcenter()
 }
 dependencies {
-    debugCompile project(path: ':data', configuration: 'debug') // This is only for the ContentProvider. Don't import data in src!
-    releaseCompile project(path: ':data', configuration: 'release') // This is only for the ContentProvider. Don't import data in src!
-    debugCompile project(path: ':domain', configuration: 'debug')
-    releaseCompile project(path: ':domain', configuration: 'release')
-    debugCompile project(path: ':crash-reporter', configuration: 'debug')
-    releaseCompile project(path: ':crash-reporter', configuration: 'release')
-    debugCompile project(path: ':event-tracker', configuration: 'debug') // Required by the ContentProvider
-    releaseCompile project(path: ':event-tracker', configuration: 'release') // Required by the ContentProvider
-    compile rootProject.ext.compileDependencies
+    implementation project(':data') // This is only for the ContentProvider. Don't import data in src!
+    implementation project(':domain')
+    implementation project(':crash-reporter')
+    implementation project(':event-tracker') // Required by the ContentProvider
+    implementation rootProject.ext.compileDependencies
     kapt rootProject.ext.annotationProcessorAppDependencies
-    compile rootProject.ext.compileAppDependencies
+    implementation rootProject.ext.compileAppDependencies
 }
 
 apply plugin: 'com.google.gms.google-services'

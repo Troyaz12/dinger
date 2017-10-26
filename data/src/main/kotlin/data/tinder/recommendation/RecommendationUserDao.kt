@@ -5,6 +5,7 @@ import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Insert
 import android.arch.persistence.room.OnConflictStrategy
 import android.arch.persistence.room.Query
+import android.arch.persistence.room.Transaction
 
 @Dao
 internal interface RecommendationUserDao {
@@ -12,8 +13,10 @@ internal interface RecommendationUserDao {
     fun insertUser(user: RecommendationUserEntity)
 
     @Query("SELECT * from RecommendationUserEntity WHERE id=:id")
+    @Transaction
     fun selectUserById(id: String): LiveData<List<RecommendationUserWithRelatives>>
 
     @Query("SELECT * from RecommendationUserEntity WHERE instr(name, :filter) > 0")
+    @Transaction
     fun selectUsersByFilterOnName(filter: String): LiveData<List<RecommendationUserWithRelatives>>
 }

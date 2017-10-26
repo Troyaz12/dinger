@@ -49,17 +49,14 @@ repositories {
     jcenter()
 }
 dependencies {
-    debugCompile project(path: ':domain', configuration: 'debug')
-    releaseCompile project(path: ':domain', configuration: 'release')
-    debugCompile project(path: ':crash-reporter', configuration: 'debug')
-    releaseCompile project(path: ':crash-reporter', configuration: 'release')
-    debugCompile project(path: ':event-tracker', configuration: 'debug')
-    releaseCompile project(path: ':event-tracker', configuration: 'release')
+    implementation project(':domain')
+    implementation project(':crash-reporter')
+    implementation project(':event-tracker')
     kapt rootProject.ext.annotationProcessorDataDependencies
-    debugCompile rootProject.ext.debugCompileDataDependencies
-    compile rootProject.ext.compileDependencies
+    debugImplementation rootProject.ext.debugCompileDataDependencies
+    implementation rootProject.ext.compileDependencies
     rootProject.ext.compileDataDependencies.forEach {
-        compile(it) {
+        implementation(it) {
             // Correct RxJava is brought by the domain module
             exclude group: 'io.reactivex'
         }

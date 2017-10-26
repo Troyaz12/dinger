@@ -22,3 +22,4 @@
 -keep class android.support.v7.widget.SearchView { *; }
 -dontwarn android.arch.util.paging.CountedDataSource
 -dontwarn android.arch.persistence.room.paging.LimitOffsetDataSource
+-dontwarn io.reactivex.internal.**

@@ -25,7 +25,7 @@ buildscript {
     dependencies {
         classpath classpathDependencies
     }
-    rootProject.ext.supportLibraryVersion = "26.1.0"
+    rootProject.ext.supportLibraryVersion = "27.0.0"
 }
 final def inducedVersion = System.getenv("ARTIFACT_VERSION")
 final def staticAnalysisReportFolderTarget = project.rootDir.absolutePath + "/staticAnalysisReport"

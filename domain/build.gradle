@@ -1,12 +1,7 @@
 buildscript {
     apply from: '../_buildsystem/buildscript.gradle'
-    repositories {
-        google()
-        maven { url "https://plugins.gradle.org/m2/" }
-    }
-    dependencies {
-        classpath project.ext.classpathDependencies
-    }
+    repositories project.ext.classpathRepositories
+    dependencies project.ext.classpathDependencies
 }
 
 apply from: '../_buildsystem/configurations.gradle'
@@ -44,10 +39,6 @@ android {
     sourceSets.forEach {
         it.java.srcDirs = ["src/$it.name/kotlin"]
     }
-}
-repositories {
-    google()
-    jcenter()
 }
 dependencies {
     kapt project.ext.annotationProcessorDomainDependencies

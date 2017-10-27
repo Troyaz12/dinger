@@ -12,7 +12,6 @@ final def rxAndroid2Version = "2.0.1"
 final def rxJava2Version = "2.1.2"
 final def storeVersion = "3.0.0-beta"
 final def supportLibraryVersion = "27.0.0"
-
 ext {
     compileDependencies = [
             "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
@@ -66,4 +65,8 @@ ext {
     compileEventTrackerDependencies = [
             "com.google.firebase:firebase-core:$googlePlayServicesVersion",
     ]
+}
+repositories {
+    google()
+    jcenter()
 }

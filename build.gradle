@@ -7,7 +7,7 @@ buildscript {
         google()
         maven { url "https://plugins.gradle.org/m2/" }
     }
-    final def androidPluginVersion = "3.0.0"
+    final def androidPluginVersion = "3.1.0-alpha01"
     final def kotlinPluginVersion = rootProject.ext.kotlinVersion = "1.1.51"
     final def dokkaPluginVersion = "0.9.15"
     final def googleServicesPluginVersion = "3.1.0"

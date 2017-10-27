@@ -6,6 +6,8 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'org.jetbrains.dokka-android'
 apply plugin: 'com.google.firebase.firebase-crash'
 
+apply from: '../buildsystem/configurations.gradle'
+
 android {
     compileSdkVersion rootProject.ext.androidCompileSdkVersion
     buildToolsVersion rootProject.ext.androidBuildToolsVersion

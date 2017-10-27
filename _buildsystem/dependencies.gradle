@@ -3,7 +3,7 @@ final def daggerVersion = "2.12"
 final def facebookSdkVersion = "4.27.0"
 final def googlePlayServicesVersion = "11.4.0"
 final def jsr250Version = "1.0"
-final def kotlinVersion = rootProject.ext.kotlinVersion
+final def kotlinVersion = "1.1.51"
 final def lottieVersion = "2.1.0"
 final def moshiVersion = "1.5.0" // TODO When moshi-kotlin requires no kotlin-reflect, include it https://github.com/square/moshi/issues/315 and change @field:Json to @Json
 final def okHttp3Version = "3.8.0"
@@ -11,6 +11,7 @@ final def retrofitVersion = "2.3.0"
 final def rxAndroid2Version = "2.0.1"
 final def rxJava2Version = "2.1.2"
 final def storeVersion = "3.0.0-beta"
+final def supportLibraryVersion = "27.0.0"
 
 ext {
     compileDependencies = [

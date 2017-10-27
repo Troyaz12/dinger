@@ -7,7 +7,7 @@ ext {
     androidVersionCode = inducedVersion != null ? Integer.parseInt(inducedVersion) : 1 // Depending on the git method locally causes IDE issues
     androidVersionName = String.valueOf(androidVersionCode)
     androidApplicationIdBase = "org.stoyicker.dinger"
-    staticAnalysisReportTarget = project.rootDir.absolutePath + "/staticAnalysisReport"
+    staticAnalysisReportTarget = project.buildDir.absolutePath + "/staticAnalysisReport"
     javaVersion = JavaVersion.VERSION_1_7
     firebaseServiceAccountFileName = "firebase-crashreporting-private-key.json"
 }

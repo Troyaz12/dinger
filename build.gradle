@@ -1,5 +1,3 @@
-import java.nio.file.Paths
-
 buildscript {
 	repositories {
         google()
@@ -25,13 +23,4 @@ buildscript {
     }
     rootProject.ext.supportLibraryVersion = "27.0.0"
     rootProject.ext.archRuntimeVersion = "1.0.3"
-}
-final def staticAnalysisReportFolderTarget = project.rootDir.absolutePath + "/staticAnalysisReport"
-task clean(type: Delete, overwrite: true) {
-    group "Verification"
-    description "Deletes the build directories of the whole project and the static analysis result."
-    rootProject.allprojects.each {
-        delete it.buildDir
-  	    delete Paths.get(it.projectDir.absolutePath, staticAnalysisReportFolderTarget).toAbsolutePath().toString()
-  }
 }

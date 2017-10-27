@@ -3,7 +3,6 @@ apply plugin: 'kotlin-android'
 apply plugin: 'org.jmailen.kotlinter'
 apply plugin: 'org.jetbrains.dokka-android'
 
-
 apply from: '../_buildsystem/configurations.gradle'
 apply from: '../_buildsystem/dependencies.gradle'
 apply from: '../_buildsystem/properties.gradle'

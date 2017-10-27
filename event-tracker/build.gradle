@@ -1,11 +1,22 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'org.jmailen.kotlinter'
-apply plugin: 'org.jetbrains.dokka-android'
+buildscript {
+    apply from: '../_buildsystem/buildscript.gradle'
+    repositories {
+        google()
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+    dependencies {
+        classpath project.ext.classpathDependencies
+    }
+}
 
 apply from: '../_buildsystem/configurations.gradle'
 apply from: '../_buildsystem/dependencies.gradle'
 apply from: '../_buildsystem/properties.gradle'
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'org.jmailen.kotlinter'
+apply plugin: 'org.jetbrains.dokka-android'
 
 android {
     compileSdkVersion project.ext.androidCompileSdkVersion

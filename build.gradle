@@ -7,7 +7,7 @@ buildscript {
     final def kotlinPluginVersion = rootProject.ext.kotlinVersion = "1.1.51"
     final def dokkaPluginVersion = "0.9.15"
     final def googleServicesPluginVersion = "3.1.0"
-    final def firebasePluginsVersion = "1.1.0"
+    final def firebasePluginsVersion = "1.1.1"
     final def kotlinterPluginVersion = "1.2.0"
     final def classpathDependencies = [
             "com.android.tools.build:gradle:$androidPluginVersion",

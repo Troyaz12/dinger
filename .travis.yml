@@ -29,7 +29,7 @@ script:
       echo "Commit message has [noci]. CI skipped (reported successful)".
       ;;
     *)
-      ./gradlew clean build dokka :app:check :domain:check :data:check --no-daemon --stacktrace
+      ./gradlew clean build dokka :app:check :domain:check :data:check --no-daemon
       ;;
   esac
 after_success:

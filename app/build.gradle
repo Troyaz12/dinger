@@ -6,11 +6,13 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'org.jetbrains.dokka-android'
 apply plugin: 'com.google.firebase.firebase-crash'
 
-apply from: '../buildsystem/configurations.gradle'
+apply from: '../_buildsystem/configurations.gradle'
+apply from: '../_buildsystem/dependencies.gradle'
+apply from: '../_buildsystem/properties.gradle'
 
 android {
-    compileSdkVersion rootProject.ext.androidCompileSdkVersion
-    buildToolsVersion rootProject.ext.androidBuildToolsVersion
+    compileSdkVersion project.ext.androidCompileSdkVersion
+    buildToolsVersion project.ext.androidBuildToolsVersion
     signingConfigs {
         dummy1 {
             storeFile new File("dummy1.keystore")
@@ -32,11 +34,11 @@ android {
         }
     }
     defaultConfig {
-        applicationId rootProject.ext.androidApplicationIdBase
-        versionCode rootProject.ext.androidVersionCode
-        versionName rootProject.ext.androidVersionName
-        minSdkVersion rootProject.ext.androidMinSdkVersion
-        targetSdkVersion rootProject.ext.androidTargetSdkVersion
+        applicationId project.ext.androidApplicationIdBase
+        versionCode project.ext.androidVersionCode
+        versionName project.ext.androidVersionName
+        minSdkVersion project.ext.androidMinSdkVersion
+        targetSdkVersion project.ext.androidTargetSdkVersion
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
@@ -50,7 +52,7 @@ android {
         abortOnError true
         absolutePaths true
         checkAllWarnings true
-        htmlOutput = new File("$rootProject.ext.staticAnalysisReportTarget/$project.name/lint.html")
+        htmlOutput = new File("$project.ext.staticAnalysisReportTarget/$project.name/lint.html")
         quiet false
         warningsAsErrors true
     }
@@ -67,11 +69,11 @@ dependencies {
     implementation project(':domain')
     implementation project(':crash-reporter')
     implementation project(':event-tracker') // Required by the ContentProvider
-    implementation rootProject.ext.compileDependencies
-    kapt rootProject.ext.annotationProcessorAppDependencies
-    implementation rootProject.ext.compileAppDependencies
+    implementation project.ext.compileDependencies
+    kapt project.ext.annotationProcessorAppDependencies
+    implementation project.ext.compileAppDependencies
 }
 
 apply plugin: 'com.google.gms.google-services'
-setProperty("FirebaseServiceAccountFilePath", rootProject.rootDir.absolutePath + "/" +
-        rootProject.ext.firebaseServiceAccountFileName)
+setProperty("FirebaseServiceAccountFilePath", project.rootDir.absolutePath + "/" +
+        project.ext.firebaseServiceAccountFileName)

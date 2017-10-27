@@ -4,16 +4,18 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'org.jmailen.kotlinter'
 apply plugin: 'org.jetbrains.dokka-android'
 
-apply from: '../buildsystem/configurations.gradle'
+apply from: '../_buildsystem/configurations.gradle'
+apply from: '../_buildsystem/dependencies.gradle'
+apply from: '../_buildsystem/properties.gradle'
 
 android {
-    compileSdkVersion rootProject.ext.androidCompileSdkVersion
-    buildToolsVersion rootProject.ext.androidBuildToolsVersion
+    compileSdkVersion project.ext.androidCompileSdkVersion
+    buildToolsVersion project.ext.androidBuildToolsVersion
     defaultConfig {
-        versionCode rootProject.ext.androidVersionCode
-        versionName rootProject.ext.androidVersionName
-        minSdkVersion rootProject.ext.androidMinSdkVersion
-        targetSdkVersion rootProject.ext.androidTargetSdkVersion
+        versionCode project.ext.androidVersionCode
+        versionName project.ext.androidVersionName
+        minSdkVersion project.ext.androidMinSdkVersion
+        targetSdkVersion project.ext.androidTargetSdkVersion
         buildConfigField "String", "PLATFORM_ANDROID", "\"android\""
         buildConfigField "String", "TINDER_VERSION_NAME", "\"7.6.0\""
         buildConfigField "String", "TINDER_VERSION_CODE", "\"2300\""
@@ -34,7 +36,7 @@ android {
         abortOnError true
         absolutePaths true
         checkAllWarnings true
-        htmlOutput = new File("$rootProject.ext.staticAnalysisReportTarget/$project.name/lint.html")
+        htmlOutput = new File("$project.ext.staticAnalysisReportTarget/$project.name/lint.html")
         quiet false
         warningsAsErrors true
     }
@@ -54,9 +56,9 @@ dependencies {
     implementation project(':domain')
     implementation project(':crash-reporter')
     implementation project(':event-tracker')
-    kapt rootProject.ext.annotationProcessorDataDependencies
-    debugImplementation rootProject.ext.debugCompileDataDependencies
-    implementation rootProject.ext.compileDependencies
-    implementation rootProject.ext.compileDataDependencies
-    compileOnly rootProject.ext.providedDataDependencies
+    kapt project.ext.annotationProcessorDataDependencies
+    debugImplementation project.ext.debugCompileDataDependencies
+    implementation project.ext.compileDependencies
+    implementation project.ext.compileDataDependencies
+    compileOnly project.ext.providedDataDependencies
 }

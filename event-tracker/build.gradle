@@ -3,16 +3,19 @@ apply plugin: 'kotlin-android'
 apply plugin: 'org.jmailen.kotlinter'
 apply plugin: 'org.jetbrains.dokka-android'
 
-apply from: '../buildsystem/configurations.gradle'
+
+apply from: '../_buildsystem/configurations.gradle'
+apply from: '../_buildsystem/dependencies.gradle'
+apply from: '../_buildsystem/properties.gradle'
 
 android {
-    compileSdkVersion rootProject.ext.androidCompileSdkVersion
-    buildToolsVersion rootProject.ext.androidBuildToolsVersion
+    compileSdkVersion project.ext.androidCompileSdkVersion
+    buildToolsVersion project.ext.androidBuildToolsVersion
     defaultConfig {
-        versionCode rootProject.ext.androidVersionCode
-        versionName rootProject.ext.androidVersionName
-        minSdkVersion rootProject.ext.androidMinSdkVersion
-        targetSdkVersion rootProject.ext.androidTargetSdkVersion
+        versionCode project.ext.androidVersionCode
+        versionName project.ext.androidVersionName
+        minSdkVersion project.ext.androidMinSdkVersion
+        targetSdkVersion project.ext.androidTargetSdkVersion
     }
     dexOptions {
         preDexLibraries false
@@ -22,7 +25,7 @@ android {
         abortOnError true
         absolutePaths true
         checkAllWarnings true
-        htmlOutput = new File("$rootProject.ext.staticAnalysisReportTarget/$project.name/lint.html")
+        htmlOutput = new File("$project.ext.staticAnalysisReportTarget/$project.name/lint.html")
         quiet false
         warningsAsErrors true
     }
@@ -36,6 +39,6 @@ repositories {
     jcenter()
 }
 dependencies {
-    implementation rootProject.ext.compileDependencies
-    implementation rootProject.ext.compileEventTrackerDependencies
+    implementation project.ext.compileDependencies
+    implementation project.ext.compileEventTrackerDependencies
 }

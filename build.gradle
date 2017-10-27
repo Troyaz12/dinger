@@ -1,7 +1,5 @@
 import java.nio.file.Paths
 
-apply from: 'buildsystem/dependencies.gradle'
-
 buildscript {
 	repositories {
         google()
@@ -28,20 +26,7 @@ buildscript {
     rootProject.ext.supportLibraryVersion = "27.0.0"
     rootProject.ext.archRuntimeVersion = "1.0.3"
 }
-final def inducedVersion = System.getenv("ARTIFACT_VERSION")
 final def staticAnalysisReportFolderTarget = project.rootDir.absolutePath + "/staticAnalysisReport"
-rootProject.ext {
-    androidCompileSdkVersion = 27
-    androidMinSdkVersion = 16
-    androidTargetSdkVersion = 27
-    androidBuildToolsVersion = '27.0.0'
-	androidVersionCode = inducedVersion != null ? Integer.parseInt(inducedVersion) : 1 // Depending on the git method locally causes IDE issues
-	androidVersionName = String.valueOf(androidVersionCode)
-	androidApplicationIdBase = "org.stoyicker.dinger"
-	staticAnalysisReportTarget = staticAnalysisReportFolderTarget
-    javaVersion = JavaVersion.VERSION_1_7
-    firebaseServiceAccountFileName = "firebase-crashreporting-private-key.json"
-}
 task clean(type: Delete, overwrite: true) {
     group "Verification"
     description "Deletes the build directories of the whole project and the static analysis result."
